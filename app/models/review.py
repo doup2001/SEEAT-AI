@@ -11,7 +11,6 @@ class Review(Base):
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
     content = Column(String(255))
-    movie_title = Column(String(255))
     rating = Column(Float, nullable=False)
     thumbnail_url = Column(String(255))
     seat_id = Column(String(255), index=True)
