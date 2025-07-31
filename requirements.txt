@@ -4,7 +4,7 @@ uvicorn[standard]
 
 # 데이터베이스
 sqlalchemy
-psycopg2-binary  # PostgreSQL 사용 시 (MySQL이면 pymysql 등으로 변경 가능)
+pymysql  # PostgreSQL 사용 시 (MySQL이면 pymysql 등으로 변경 가능)
 
 # 환경 변수 및 로깅
 python-dotenv
