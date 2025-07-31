@@ -1,25 +1,18 @@
 # FastAPI 및 서버 실행
 fastapi
-uvicorn[standard]
+uvicorn  # 또는 uvicorn[standard] (성능 우선 시)
 
 # 데이터베이스
 sqlalchemy
-pymysql  # PostgreSQL 사용 시 (MySQL이면 pymysql 등으로 변경 가능)
+pymysql
 
 # 환경 변수 및 로깅
 python-dotenv
-loguru  # 선택적: 고급 로깅 라이브러리. 기본 logging만 쓰면 생략 가능
 
 # LangChain 및 OpenAI 임베딩
 langchain
 langchain-community
 langchain-openai
-chromadb
-faiss-cpu
-sentence-transformers
-
-# OpenAI
-openai
 
 # 스케줄러
 apscheduler
