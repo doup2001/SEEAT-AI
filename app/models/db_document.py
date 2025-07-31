@@ -1,26 +1,18 @@
+# app/models/db_document.py
+
 from langchain.schema import Document
+from app.models.review import Review
 
-def db_reviews_to_documents(reviews: list) -> list:
-    """
-    DB에서 조회한 리뷰 리스트를 LangChain Document 리스트로 변환합니다.
-
-    Args:
-        reviews (list): DB에서 조회한 리뷰 ORM 객체 리스트
-
-    Returns:
-        list: LangChain Document 객체 리스트
-    """
+def db_reviews_to_documents(reviews: list[Review]) -> list[Document]:
     documents = []
     for review in reviews:
+        hashtags = [tag.name for tag in review.hashtags]  # 리뷰 객체에서 연결된 해시태그 추출
         content = f"""
-        작성자 ID: {review.user_id}
-        영화관 좌석 ID: {review.seat_id}
-        영화 제목: {review.movie_title}
-        후기 내용: {review.content}
-        평점: {review.rating}점
-        썸네일 URL: {review.thumbnail_url if review.thumbnail_url else '없음'}
-        생성일: {review.created_at}
-        수정일: {review.updated_at}
+        영화: {review.movie_title}
+        좌석: {review.seat_id}
+        평점: {review.rating}
+        후기: {review.content}
+        해시태그: {" ".join(hashtags)}
         """
         documents.append(Document(page_content=content.strip()))
     return documents

@@ -1,7 +1,8 @@
-from sqlalchemy import Column, String, Float,BigInteger, DateTime
-from sqlalchemy.ext.declarative import declarative_base
+# app/models/review.py
 
-Base = declarative_base()
+from sqlalchemy import Column, String, Float,BigInteger, DateTime
+from app.models.base import Base
+from sqlalchemy.orm import relationship
 
 class Review(Base):
     __tablename__ = "review"  # 테이블명 정확히 지정
@@ -16,3 +17,14 @@ class Review(Base):
     seat_id = Column(String(255), index=True)
     user_id = Column(BigInteger, index=True)
 
+
+    # Review -> ReviewHashTag (중간테이블 연관)
+    review_hashtags = relationship("ReviewHashTag", back_populates="review", cascade="all, delete-orphan")
+
+    # Review -> HashTag (리스트로 바로 접근 가능하도록 secondary 연결)
+    hashtags = relationship(
+        "HashTag",
+        secondary="review_hash_tag",
+        back_populates="reviews",
+        lazy="joined"  # 필요 시 즉시 페치
+    )
