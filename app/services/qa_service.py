@@ -1,3 +1,6 @@
+# app/services/qa_service.py
+
+
 """
 RetrievalQA 체인 생성 및 질의응답 수행 모듈
 """

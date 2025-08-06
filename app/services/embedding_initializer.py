@@ -1,3 +1,6 @@
+# app/services/embedding_initializer.py
+
+
 from app.services.embedding_service import EmbeddingService
 from app.services.review_service import ReviewService
 from app.core.logger import get_logger

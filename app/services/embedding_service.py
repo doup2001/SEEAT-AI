@@ -1,3 +1,6 @@
+# app/services/embedding_service.py
+
+
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
