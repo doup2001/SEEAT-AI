@@ -13,9 +13,7 @@ class Review(Base):
     content = Column(String(255))
     rating = Column(Float, nullable=False)
     thumbnail_url = Column(String(255))
-    seat_id = Column(String(255), index=True)
     user_id = Column(BigInteger, index=True)
-
 
     # Review -> ReviewHashTag (중간테이블 연관)
     review_hashtags = relationship("ReviewHashTag", back_populates="review", cascade="all, delete-orphan")
