@@ -27,3 +27,14 @@ class Review(Base):
         back_populates="reviews",
         lazy="joined"  # 필요 시 즉시 페치
     )
+
+    # Review -> ReviewSeat (중간테이블 연관)
+    review_seats = relationship("ReviewSeat", back_populates="review", cascade="all, delete-orphan")
+
+    # Review -> Seat (리스트로 바로 접근 가능하도록 secondary 연결)
+    seats = relationship(
+        "Seat",
+        secondary="review_seat",
+        back_populates="reviews",
+        lazy="joined"  # 필요 시 즉시 페치
+    )
