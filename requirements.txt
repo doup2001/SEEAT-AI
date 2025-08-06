@@ -13,6 +13,7 @@ python-dotenv
 langchain
 langchain-community
 langchain-openai
+faiss-cpu
 
 # 스케줄러
 apscheduler
